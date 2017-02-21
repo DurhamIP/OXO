@@ -88,13 +88,16 @@ public class OXO
     }
 
     public boolean sumTotalfromN(int total, int n, List<Integer> nums){
-	if(n==0){
+	if(n<=0){
 	    return false;
 	}
 	if(nums.size() < n){
 	    return false;
 	}
 	int first = nums.get(0);
+	if(n==1){
+	    return total==first;
+	}
 	List<Integer> withoutFirst = new ArrayList<Integer>();
 	for(int num: nums){
 	    if(num!= first){
@@ -130,13 +133,14 @@ public class OXO
 		int move = players.get(playerNum).getMove();
 		game.makeMove(move);
 		playerNum++;
+		if(playerNum >= players.size()){
+		    playerNum = 0;
+		}
 	    }
 	    catch(InvalidMoveException e){
 		System.out.println("Invalid move, please try again");
 	    }
-	    if(playerNum >= players.size()){
-		playerNum = 0;
-	    }
 	}
+	System.out.println("The winner is " + players.get(1-playerNum));
     }
 }

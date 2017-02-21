@@ -19,4 +19,9 @@ public class Player {
 	    throw new InvalidMoveException(e.toString());
 	}
     }
+
+    @Override
+    public String toString(){
+	return name;
+    }
 }
